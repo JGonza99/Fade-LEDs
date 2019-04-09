@@ -4,139 +4,49 @@
 **                                                                               **
 **  NOM: Josep González Martínez                            DATA: 25/02/2019     **
 **********************************************************************************/
-
+//Resistencia 1 = min-->1500     max-->195k   Rldr=17000
+//Resistencia 2 = min-->1455     max-->472k   Rldr=26000
+//Resistencia 3 = min-->1500     max-->1M     Rldr=38700
 //********** Includes *************************************************************
 
 //********** Variables ************************************************************
-const int led0 = 3;          // donar nom al pin 3 de l’Arduino
-const int led1 = 5;          // donar nom al pin 5 de l’Arduino
-const int led2 = 6;          // donar nom al pin 6 de l’Arduino
-const int led3 = 9;          // donar nom al pin 9 de l’Arduino
-const int led4 = 10;         // donar nom al pin 10 de l’Arduino
-const int led5 = 11;         // donar nom al pin 11 de l’Arduino
-int velocitat = 500;         // velocitat de l'acció en ms
+const int ldr0 = A0;         // donar nom al pin A0 de l’Arduino
+const int ldr1 = A1;         // donar nom al pin A1 de l’Arduino
+const int ldr2 = A2;         // donar nom al pin A2 de l’Arduino
+const int led0 = 9;
+const int led1 = 10;
+const int led2 = 11;
+
+
+int valLdr0, valLdr1, valLdr2;
 
 //********** Setup ****************************************************************
 void setup()
 {
-  pinMode(led0, OUTPUT);     // definir el pin 3 com una sortida
-  pinMode(led1, OUTPUT);     // definir el pin 5 com una sortida
-  pinMode(led2, OUTPUT);     // definir el pin 6 com una sortida
-  pinMode(led3, OUTPUT);     // definir el pin 9 com una sortida
-  pinMode(led4, OUTPUT);     // definir el pin 10 com una sortida
-  pinMode(led5, OUTPUT);     // definir el pin 11 com una sortida
+  Serial.begin(9600);
+  
+  pinMode(led0, OUTPUT);     // definir el pin 9 com una sortida
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
 }
 
 //********** Loop *****************************************************************
 void loop()
 {
-  analogWrite(led0, 0);    
-  analogWrite(led1, 0);     
-  analogWrite(led2, 0);     
-  analogWrite(led3, 0);    
-  analogWrite(led4, 0);    
-  analogWrite(led5, 0);     
+  valLdr0 = analogRead(ldr0);   // llegir valor ldr0
+  valLdr1 = analogRead(ldr1);   // llegir valor ldr1
+  valLdr2 = analogRead(ldr2);   // llegir valor ldr2
   
-  delay(velocitat);          // es queden leds velocitat ms en aquest estat
-  
-  analogWrite(led0, 0);   
-  analogWrite(led1, 0);    
-  analogWrite(led2, 0);    
-  analogWrite(led3, 0);    
-  analogWrite(led4, 0);   
-  analogWrite(led5, 42);    
-  
-  delay(velocitat);           // es queden leds velocitat ms en aquest estat
-  
-  analogWrite(led0, 0);   
-  analogWrite(led1, 0);    
-  analogWrite(led2, 0);   
-  analogWrite(led3, 0);   
-  analogWrite(led4, 42);   
-  analogWrite(led5, 84);    
-   
-  delay(velocitat);           // es queden leds velocitat ms en aquest estat
-  
-  analogWrite(led0, 0);    
-  analogWrite(led1, 0);   
-  analogWrite(led2, 0);   
-  analogWrite(led3, 42);    
-  analogWrite(led4, 84);    
-  analogWrite(led5, 126);    
-  
-  delay(velocitat);           // es queden leds velocitat ms en aquest estat
+  valLdr0 = map(valLdr0, 25, 955, 255, 0); 
+  valLdr1 = map(valLdr1, 25, 940, 255, 0); 
+  valLdr2 = map(valLdr2, 20, 975, 255, 0); 
 
-  analogWrite(led0, 0);    
-  analogWrite(led1, 0);   
-  analogWrite(led2, 42);   
-  analogWrite(led3, 84);    
-  analogWrite(led4, 126);    
-  analogWrite(led5, 168);    
-  
-  delay(velocitat);           // es queden leds velocitat ms en aquest estat
-
-  analogWrite(led0, 0);    
-  analogWrite(led1, 42);   
-  analogWrite(led2, 84);   
-  analogWrite(led3, 126);    
-  analogWrite(led4, 168);    
-  analogWrite(led5, 210);    
-  
-  delay(velocitat);           // es queden leds velocitat ms en aquest estat
-  
-  analogWrite(led0,42);    
-  analogWrite(led1, 84);   
-  analogWrite(led2, 126);   
-  analogWrite(led3, 168);    
-  analogWrite(led4, 210);    
-  analogWrite(led5, 255);    
-  
-  delay(velocitat);           // es queden leds velocitat ms en aquest estat
-
-  analogWrite(led0,84);    
-  analogWrite(led1, 126);   
-  analogWrite(led2, 168);   
-  analogWrite(led3, 210);    
-  analogWrite(led4, 255);    
-  analogWrite(led5, 255);    
-  
-  delay(velocitat);           // es queden leds velocitat ms en aquest estat
-
-  analogWrite(led0,126);    
-  analogWrite(led1, 168);   
-  analogWrite(led2, 210);   
-  analogWrite(led3, 255);    
-  analogWrite(led4, 255);    
-  analogWrite(led5, 255);    
-  
-  delay(velocitat);           // es queden leds velocitat ms en aquest estat
-
-  analogWrite(led0,168);    
-  analogWrite(led1, 210);   
-  analogWrite(led2, 255);   
-  analogWrite(led3, 255);    
-  analogWrite(led4, 255);    
-  analogWrite(led5, 255);    
-  
-  delay(velocitat);           // es queden leds velocitat ms en aquest estat
-  
-  analogWrite(led0,210);    
-  analogWrite(led1, 255);   
-  analogWrite(led2, 255);   
-  analogWrite(led3, 255);    
-  analogWrite(led4, 255);    
-  analogWrite(led5, 255);    
-  
-  delay(velocitat);           // es queden leds velocitat ms en aquest estat
-
-  analogWrite(led0,255);    
-  analogWrite(led1, 255);   
-  analogWrite(led2, 255);   
-  analogWrite(led3, 255);    
-  analogWrite(led4, 255);    
-  analogWrite(led5, 255);    
-  
-  delay(velocitat);           // es queden leds velocitat ms en aquest estat
+   analogWrite(led0, valLdr0);
+   analogWrite(led1, valLdr1);
+   analogWrite(led2, valLdr2);
 }
+
+//********** Funcions *************************************************************
+
 
 //********** Funcions *************************************************************
